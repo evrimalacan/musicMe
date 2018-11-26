@@ -55,12 +55,24 @@ public class UserInstrumentController extends HttpServlet {
     }
     
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	boolean ajax = "XMLHttpRequest".equals(request.getHeader("X-Requested-With"));
+    	Integer instrument_id = Integer.parseInt(request.getParameter("id"));
+    	Integer brand_id = Integer.parseInt(request.getParameter("brand"));
     	
-    	if (!ajax) {
-    		return;
-    	}
+    	EntityManager em = EMF.createEntityManager();
     	
-    	System.out.println(request.getParameter("name"));
+    	Instrument instrument = em.find(Instrument.class, instrument_id);
+    	Brand brand= em.find(Brand.class, brand_id);
+    	
+    	em.getTransaction().begin();
+    	
+    	instrument.setName(request.getParameter("name"));
+    	instrument.setDescription(request.getParameter("description"));
+    	instrument.setDailyPrice(Double.parseDouble(request.getParameter("dailyPrice")));
+    	instrument.setMonthlyPrice(Double.parseDouble(request.getParameter("monthlyPrice")));
+    	instrument.setBrand(brand);
+    		
+    	em.getTransaction().commit();
+    	
+    	System.out.println("oldu bitti :))");
     }
 }

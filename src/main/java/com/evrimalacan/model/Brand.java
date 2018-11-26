@@ -23,7 +23,10 @@ public class Brand {
 	@GenericGenerator(name = "native", strategy = "native")
 	@Column(name = "id", updatable = false, nullable = false)
 	private int id;
+	
+	@Column(nullable = false)
 	private String name;
+	
 	private String about;
 
 	public Brand() {

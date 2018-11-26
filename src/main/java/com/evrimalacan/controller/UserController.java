@@ -50,6 +50,7 @@ public class UserController extends HttpServlet {
     	request.getSession().removeAttribute("message");
     	request.getSession().removeAttribute("messageType");
     	
+    	
         RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/views/user.jsp");
 
         rd.forward(request, response);

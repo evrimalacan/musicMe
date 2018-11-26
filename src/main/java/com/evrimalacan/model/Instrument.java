@@ -34,11 +34,11 @@ public class Instrument {
 	@ManyToOne(fetch = FetchType.EAGER)
     private Brand brand;
 	
-	@Column(name = "daily_price", nullable = false)
-	private int dailyPrice;
+	@Column(name = "daily_price", nullable = false, scale = 2)
+	private double dailyPrice;
 	
-	@Column(name = "monthly_price", nullable = false)
-	private int monthlyPrice;
+	@Column(name = "monthly_price", nullable = false, scale = 2)
+	private double monthlyPrice;
 
 	public Instrument() {
 	}
@@ -81,19 +81,19 @@ public class Instrument {
 		this.type = type;
 	}
 
-	public int getDailyPrice() {
+	public double getDailyPrice() {
 		return dailyPrice;
 	}
 
-	public void setDailyPrice(int dailyPrice) {
+	public void setDailyPrice(double dailyPrice) {
 		this.dailyPrice = dailyPrice;
 	}
 
-	public int getMonthlyPrice() {
+	public double getMonthlyPrice() {
 		return monthlyPrice;
 	}
 
-	public void setMonthlyPrice(int monthlyPrice) {
+	public void setMonthlyPrice(double monthlyPrice) {
 		this.monthlyPrice = monthlyPrice;
 	}
 }
