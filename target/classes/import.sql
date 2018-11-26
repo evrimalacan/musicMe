@@ -1,0 +1,13 @@
+INSERT INTO types (id, name) VALUES (null, 'Guitar');
+INSERT INTO types (id, name) VALUES (null, 'Drums');
+INSERT INTO types (id, name) VALUES (null, 'Flute');
+INSERT INTO brands (id, name, about) VALUES (null, "Fender", "Fender is an American manufacturer of stringed instruments and amplifiers.");
+INSERT INTO brands (id, name, about) VALUES (null, "Ibanez", "Ibanez is a Japanese guitar brand owned by Hoshino Gakki.");
+INSERT INTO brands (id, name, about) VALUES (null, "Yamaha", "Yamaha is a Japanese multinational corporation and conglomerate with a very wide range of products and services, predominantly musical instruments, electronics and power sports equipment.");
+INSERT INTO brands (id, name, about) VALUES (null, "Bösendorfer", "Bösendorfer is an Austrian piano manufacturer and, since 2008, a wholly owned subsidiary of Yamaha.");
+INSERT INTO brands (id, name, about) VALUES (null, "Dominguez", null);
+INSERT INTO brands (id, name, about) VALUES (null, "Valencia", null);
+INSERT INTO users (id, name, email, password) VALUES (null, "Evrim", "evrimalacan@gmail.com", "123123");
+INSERT INTO users (id, name, email, password) VALUES (null, "Dilan", "dilanderin@gmail.com", "123123");
+INSERT INTO instruments (id, user_id, name, description, daily_price, monthly_price, type_id, brand_id) VALUES (null,  2, "Doktordan temiz gitar", "Bu gitari kiralayan gercekten hayatinin en dogru kararini vermis olacak. Inanilmaz bisi bu gitar ya :D!", 20, 400, 1, 2);
+INSERT INTO instruments (id, user_id, name, description, daily_price, monthly_price, type_id, brand_id) VALUES (null,  2, "Mis gibi flut", "Abi fena bi flut bu kesin alin", 15, 375, 3, 2);

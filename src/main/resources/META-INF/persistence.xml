@@ -1,0 +1,68 @@
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
+version="2.1">
+    <persistence-unit name="MusicMe">
+        <properties>
+            <property name="javax.persistence.jdbc.driver"
+                      value="com.mysql.cj.jdbc.Driver" />
+
+            <property name="javax.persistence.jdbc.url"
+                      value="jdbc:mysql://localhost:3306/MusicMe" />
+
+            <property name="javax.persistence.jdbc.user"
+                      value="root" />
+
+            <property name="javax.persistence.jdbc.password"
+                      value="Fenerli1996." />
+
+            <property name="hibernate.dialect"
+                      value="org.hibernate.dialect.MySQL57Dialect"/>
+
+            <property name="hibernate.show_sql"
+                      value="true" />
+
+            <property name="hibernate.hbm2ddl.auto"
+                      value="update" />
+
+            <!-- hibernate.c3p0.min_size – Minimum number of JDBC connections in the pool. Hibernate default: 1 -->
+            <property name="hibernate.c3p0.min_size"
+                      value="5" />
+
+            <!-- hibernate.c3p0.max_size – Maximum number of JDBC connections in the pool. Hibernate default: 100 -->
+            <property name="hibernate.c3p0.max_size"
+                      value="20" />
+
+            <!-- hibernate.c3p0.timeout – When an idle connection is removed from the pool (in second). Hibernate default: 0, never expire. -->
+            <property name="hibernate.c3p0.timeout"
+                      value="300" />
+
+            <!-- hibernate.c3p0.max_statements – Number of prepared statements will be cached. Increase performance. Hibernate default: 0 , caching is disable. -->
+            <property name="hibernate.c3p0.max_statements"
+                      value="50" />
+
+            <!-- hibernate.c3p0.idle_test_period – idle time in seconds before a connection is automatically validated. Hibernate default: 0 -->
+            <property name="hibernate.c3p0.idle_test_period"
+                      value="3000" />
+			
+			<property name="hibernate.c3p0.privilegeSpawnedThreads"
+					  value="true"/>
+					  
+			<property name="hibernate.c3p0.contextClassLoaderSource"
+					  value="library" />
+
+            <property name="hibernate.hbm2ddl.auto"
+                      value="create" />
+
+            <property name="show_sql"
+                      value="true" />
+
+            <property name="format_sql"
+                      value="true" />
+
+            <property name="hibernate.archive.autodetection"
+                      value="class, hbm" />
+        </properties>
+    </persistence-unit>
+</persistence>
