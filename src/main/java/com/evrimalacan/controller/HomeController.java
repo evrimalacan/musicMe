@@ -1,5 +1,6 @@
 package com.evrimalacan.controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
@@ -15,19 +16,27 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.evrimalacan.listener.EMF;
 import com.evrimalacan.model.Instrument;
+import com.evrimalacan.model.Image;
 
 @WebServlet("")
 public class HomeController extends HttpServlet {
     private static final long serialVersionUID = 1L;
+    
+    private static final String UPLOAD_DIR =
+	    	"uploads" +
+	    	File.separator +
+	    	"instrument-images";
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	String query = "SELECT i from Instrument i ";
+    	String query = 
+    		"SELECT DISTINCT i " + 
+    		"from Instrument i " +
+    		"LEFT JOIN FETCH i.images ii ";
+
     	String term = request.getParameter("term");
     	
     	EntityManager em = EMF.createEntityManager();
     	TypedQuery<Instrument> instrumentQuery = null;
-    	
-    	System.out.println(request.getServletContext().getRealPath("/"));
     	
     	if (term != null) {
 			instrumentQuery = em.createQuery(
@@ -49,13 +58,15 @@ public class HomeController extends HttpServlet {
         em.getTransaction().commit();
         em.close();
 
-//        for	(Instrument ins : instruments) {
-//        	System.out.println(ins.getName());
-//        	System.out.println(ins.getBrand().getName());
-//        	System.out.println(ins.getType().getName());
-//        }
+        for	(Instrument ins : instruments) {
+        	System.out.println(ins.getName());
+        	System.out.println(ins.getBrand().getName());
+        	System.out.println(ins.getType().getName());
+        }
 
         request.setAttribute("instruments", instruments);
+        request.setAttribute("imageDir", UPLOAD_DIR + File.separator);
+        
         RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/views/home.jsp");
 
         rd.forward(request, response);

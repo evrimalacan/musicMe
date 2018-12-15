@@ -9,6 +9,10 @@ pageEncoding="UTF-8"%>
 			.instrument a {
 				text-decoration: none;
 			}
+			.card-img-top {
+				width: auto;
+				height: 250px;
+			}
 		</style>
     </jsp:attribute>
     
@@ -29,10 +33,24 @@ pageEncoding="UTF-8"%>
 				</div>
 			</c:if>
 		    <c:forEach items="${instruments}" var="instrument">
-		    	<div class="col-lg-3 col-sm-6 col-12">
+		    	<div class="col-lg-3 col-md-4 col-sm-6 col-12">
 			    	<div class="card instrument mb-4">
-			    		<a href="/instrument/${instrument.getId()}">
-			    			<img class="card-img-top" src="resources/images/download.svg" alt="">
+			    		<a href="/instrument/${instrument.getId()}" class="text-center">
+			    			<c:set
+				      			var="source"
+				      			value="resources/images/thumbnail.svg"
+				      		/>
+				      		
+				      		<c:forEach items="${instrument.getImages()}" var="image">
+				      			<c:if test="${image.isThumbnail()}">
+				      				<c:set
+						      			var="source"
+						      			value="${imageDir}${image.getPath()}"
+						      		/>
+				      			</c:if>
+				      		</c:forEach>
+				      		
+			    			<img class="card-img-top" src="${source}" />
 			    		</a>
 		    			<div class="card-body p-3">
 		    				<a class="text-dark" href="/instrument/${instrument.getId()}">
@@ -44,7 +62,7 @@ pageEncoding="UTF-8"%>
 								</div>
 								<hr>
 							</a>
-							<button type="button" class="btn btn-sm btn-block btn-outline-primary">Rent Now</button>
+							<a href="/instrument/${instrument.getId()}" class="btn btn-sm btn-block btn-outline-primary">Rent Now</a>
 						</div>
 					</div>
 				</div>

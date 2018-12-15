@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebFilter(urlPatterns = {
-		"/userInstrument",
+//		"/userInstrument",
 	}
 )
 public class AllowPostAjax implements Filter {
@@ -27,9 +27,7 @@ public class AllowPostAjax implements Filter {
         boolean isAjax = "XMLHttpRequest".equals(req.getHeader("X-Requested-With"));
         boolean isPost = "POST".equals(req.getMethod());
     	
-    	if (!isPost) {
-    		chain.doFilter(request, response);
-    	} else if (isAjax) {
+    	if (!isPost || isAjax) {
     		chain.doFilter(request, response);
     	} else {
     		res.sendRedirect("/");

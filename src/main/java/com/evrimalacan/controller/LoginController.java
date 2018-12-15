@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.evrimalacan.listener.EMF;
 import com.evrimalacan.model.User;
+import com.sun.org.apache.xerces.internal.util.URI;
 
 @WebServlet("/login")
 public class LoginController extends HttpServlet {
@@ -42,10 +43,13 @@ public class LoginController extends HttpServlet {
 			request.getSession().setAttribute("user", user);
 			
 			String redirect = request.getParameter("redirect");
+			String referer = request.getParameter("referer");
 			
-			if (redirect != null)
+			if (redirect != null) {
 				response.sendRedirect(redirect);
-			else {
+			} else if (referer.contains(request.getServerName())) {
+				response.sendRedirect(new URI(referer).getPath());
+			} else {
 				response.sendRedirect("/");
 			}
 		} catch (NoResultException e) {

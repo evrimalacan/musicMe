@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebFilter(urlPatterns = {
        "/user",
        "/userInstrument",
+       "/userRent",
     }
 )
 public class AllowUser implements Filter {
@@ -28,9 +29,9 @@ public class AllowUser implements Filter {
 //        String loginURI = req.getContextPath() + "/login";
 //        boolean loginRequest = req.getRequestURI().equals(loginURI);
 
-        boolean user = req.getSession().getAttribute("user") != null;
+        boolean isLogin = req.getSession().getAttribute("user") != null;
 
-        if (user) {
+        if (isLogin) {
             chain.doFilter(request, response);
         } else {
         	req.getSession().setAttribute("error", "You need to Login first");

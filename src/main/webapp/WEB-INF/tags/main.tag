@@ -39,6 +39,9 @@
         #search-form i {
             cursor: pointer;
         }
+        #search-form {
+        	width: calc((100% - 115px) / 2);
+        }
     </style>
 
     <jsp:invoke fragment="styles"/>
@@ -52,9 +55,9 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbar">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
+        <div class="collapse navbar-collapse justify-content-between" id="navbar">
+            <!-- <ul class="navbar-nav mr-auto">
+                 <li class="nav-item active">
                     <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
@@ -63,9 +66,9 @@
                 <li class="nav-item">
                     <a class="nav-link disabled" href="#">Disabled</a>
                 </li>
-            </ul>
+            </ul>  -->
             <form class="form-inline my-2 my-lg-0" method="get" action="/" id="search-form">
-                <div class="input-group">
+                <div class="input-group w-100">
                     <input type="text" name="term" class="form-control" aria-label="Search"
                     placeholder="Search" autocomplete="off"
                     value="<%=request.getParameter("term") == null ? "" : request.getParameter("term")%>">
@@ -86,6 +89,7 @@
 		                    </a>
 		                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-user">
 		                    	<a class="dropdown-item" href="/userInstrument">My Instruments</a>
+		                    	<a class="dropdown-item" href="/userRent">My Rents & Rentals</a>
 		                    	<a class="dropdown-item" href="/user">Settings</a>
 		                        <a class="dropdown-item" href="#"
 		                        onclick="event.preventDefault();$('#logout-form').submit();">

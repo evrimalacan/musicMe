@@ -45,7 +45,9 @@ pageEncoding="UTF-8"%>
         	<input type="hidden" name="redirect" value="${redirect}">
         	<% request.getSession().removeAttribute("redirect"); %>
         </c:if>
-
+		
+		<input type="hidden" name="referer" value="<%= request.getHeader("referer") %>">
+		
         <button class="btn btn-lg btn-primary btn-block mb-4" type="submit">Sign in</button>
 
         <c:if test="${error != null}">
