@@ -115,13 +115,13 @@ public class UserInstrumentController extends HttpServlet {
 				imageToDelete = em.createQuery(
 		            "SELECT im " +
 		            "FROM Image im " +
-		            "WHERE instrument_id = :iid ",
+		            "WHERE instrument_id = :iid " +
+		            "AND im.id = :id",
 		            Image.class
 		        )
+				.setParameter("id", Integer.parseInt(id))
 		        .setParameter("iid", instrumentId)
 		        .getSingleResult();
-
-				imageToDelete = em.find(Image.class, Integer.parseInt(id));
 
 	    		File image_file = new File(uploadFilePath + imageToDelete.getPath());
 

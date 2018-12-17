@@ -19,7 +19,17 @@ public class User {
     @Column(name = "id", updatable = false, nullable = false)
     private int id;
 	
-    private String name;
+	public User() {	
+	}
+	
+    public User(String name, String email, String password) {
+		super();
+		this.name = name;
+		this.email = email;
+		this.password = password;
+	}
+    
+	private String name;
     
     @NaturalId
     @Column(unique = true)

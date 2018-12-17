@@ -26,7 +26,6 @@ public class LoginController extends HttpServlet {
 		EntityManager em = EMF.createEntityManager();
 
 		try {
-
 			User user = em.createQuery(
 				"SELECT u " +
 				"FROM User u " +
@@ -41,13 +40,13 @@ public class LoginController extends HttpServlet {
 			em.close();
 
 			request.getSession().setAttribute("user", user);
-			
+
 			String redirect = request.getParameter("redirect");
 			String referer = request.getParameter("referer");
-			
+
 			if (redirect != null) {
 				response.sendRedirect(redirect);
-			} else if (referer.contains(request.getServerName())) {
+			} else if (referer != null && referer.contains(request.getServerName())) {
 				response.sendRedirect(new URI(referer).getPath());
 			} else {
 				response.sendRedirect("/");

@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebFilter(urlPatterns = {
 		"/login",
+		"/register",
 	}
 )
 public class AllowGuest implements Filter {
