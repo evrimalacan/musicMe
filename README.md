@@ -1,6 +1,7 @@
 # MusicMe
 
-An online musical instrument rental application
+An online musical instrument rental application.\
+[Accessible here](http://evrimalacan.com)
 
 ### Installing
 
