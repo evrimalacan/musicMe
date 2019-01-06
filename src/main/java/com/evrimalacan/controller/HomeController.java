@@ -29,7 +29,7 @@ public class HomeController extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	String query = 
-    		"SELECT DISTINCT i " + 
+    		"SELECT DISTINCT i " +
     		"from Instrument i " +
     		"LEFT JOIN FETCH i.images ii ";
 
